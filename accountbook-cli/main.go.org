@@ -1,0 +1,223 @@
+package main
+
+import (
+	"database/sql"
+	"fmt"
+	"log"
+	_ "github.com/mattn/go-sqlite3"
+)
+
+type Item struct {
+	ID int
+	Category string
+	Price int
+}
+
+func main() {
+	db, err := sql.Open("sqlite3", "./accountbook.db" )
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// テーブル作成(なければ)
+	if err := createTable(db); err != nil {
+		log.Fatal(err)
+	}
+
+	var n int
+	fmt.Print("何件入力しますか>")
+	fmt.Scan(&n)
+
+	// 入力
+	for i := 0; i < n; i++ {
+		if err := inputItem(db); err != nil {
+			log.Fatal(err)
+		}
+	}
+
+	// 表示
+	if err := showSummary(db); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func createTable(db *sql.DB) error {
+	const sqlStr = `CREATE TABLE IF NOT EXISTS items(
+			id INTEGER PRIMARY KEY,
+			category TEXT NOT NULL,
+			price INTEGER NOT NULL
+	);`
+
+	_, err := db.Exec(sqlStr)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func inputItem(db *sql.DB) error {
+	var item Item
+
+	fmt.Print("品目>")
+	fmt.Scan(&item.Category)
+
+	fmt.Print("値段>")
+	fmt.Scan(&item.Price)
+
+	const sqlStr = `INSERT INTO items(category, price) VALUES (?,?);`
+	_, err := db.Exec(sqlStr, item.Category, item.Price)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func showSummary(db *sql.DB) error {
+	const sqlStr = `
+	SELECT category, COUNT(1) as count, SUM(price) as sum
+	FROM items
+	GROUP BY category`
+	rows, err := db.Query(sqlStr)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+
+	fmt.Println("=====")
+	fmt.Printf("品物\t個数\t合計\t平均\n")
+
+	for rows.Next() {
+		var (
+			category string
+			sum int
+			count int
+		)
+
+		err := rows.Scan(&category, &count, &sum)
+		if err != nil {
+			return err
+		}
+		avg := float64(sum) / float64(count)
+		fmt.Printf("%s\t%d\t%d円\t%.2f円\n", category, count, sum, avg)
+	}
+	fmt.Println("=====")
+
+	err = rows.Err()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// STEP05
+//func showItems(db *sql.DB) error {
+//
+//	const sqlStr = `SELECT * FROM items`
+//	rows, err := db.Query(sqlStr)
+//	if err != nil {
+//		return err
+//	}
+//	defer rows.Close()
+//
+//	fmt.Println("=====")
+//	for rows.Next() {
+//		var item Item
+//
+//		err := rows.Scan(&item.ID, &item.Category, &item.Price)
+//		if err != nil {
+//			return err
+//		}
+//		fmt.Printf("[%04d] %s:%d円\n", item.ID, item.Category, item.Price)
+//	}
+//
+//	fmt.Println("=====")
+//
+//	if err := rows.Err(); err != nil {
+//		return err
+//	}
+//
+//	return nil
+//}
+
+//STEP04
+//func main() {
+//	var n int
+//
+//	fmt.Print("件数>")
+//	fmt.Scan(&n)
+//
+//	items := make([]Item, 0, n)
+//
+//	for i:=0; i < cap(items); i++ {
+//		items = inputItem(items)
+//	}
+//
+//	showItems(items)
+//}
+//
+//func inputItem(items []Item) []Item {
+//	var item Item
+//
+//	fmt.Print("品目>")
+//	fmt.Scan(&item.Category)
+//	fmt.Print("値段>")
+//	fmt.Scan(&item.Price)
+//
+//	items = append(items, item)
+//	return items
+//}
+//
+//func showItems(items []Item) {
+//	fmt.Println("=====")
+//
+//	for i:=0; i<len(items); i++ {
+//		fmt.Printf("%s: %d円\n", items[i].Category, items[i].Price)
+//	}
+//	fmt.Println("=====")
+//}
+
+// STEP03
+//func main() {
+//	item := inputItem()
+//
+//	fmt.Println("=====")
+//	fmt.Printf("%sに%d円使いました\n", item.Category, item.Price)
+//	fmt.Println("=====")
+//}
+//
+//func inputItem() Item {
+//	var item Item
+//
+//	fmt.Print("品目>")
+//	fmt.Scan(&item.Category)
+//
+//	fmt.Print("値段>")
+//	fmt.Scan(&item.Price)
+//
+//	return item
+//}
+
+// STEP02
+//func main() {
+//	var category string
+//	var price int
+//
+//	fmt.Print("品目>")
+//	fmt.Scan(&category)
+//	fmt.Print("値段>")
+//	fmt.Scan(&price)
+//
+//
+//	fmt.Println("==============")
+//	fmt.Printf("%sに%d円使いました\n", category, price)
+//
+//	fmt.Println("==============")
+//}
+
+// STEP01
+//func main() {
+//	println("Hello, 世界")
+//}
