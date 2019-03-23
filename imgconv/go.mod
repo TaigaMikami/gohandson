@@ -1,3 +1,3 @@
-module github.com/TaigaMikami/imgconv
+module imgconv
 
 go 1.12
