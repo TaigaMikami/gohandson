@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"image"
 	"image/color"
-	"image/draw"
 	"strconv"
 	"strings"
 	"unicode"
+	"golang.org/x/image/draw"
 )
 
 var (
@@ -131,6 +131,20 @@ func (img *Image) Clip(s string) error {
 
 	draw.Draw(dst, dst.Bounds(), img, r.Min, draw.Src)
 
+	img.Image = dst
+
+	return nil
+}
+
+func (img *Image) Resize(s string) error {
+	sz, err := img.parseSize(s)
+	if err != nil {
+		return err
+	}
+
+	dst := newDrawImage(image.Rectangle{image.ZP, sz}, img.ColorModel())
+
+	draw.NearestNeighbor.Scale(dst, dst.Bounds(), img, img.Bounds(), draw.Src, nil)
 	img.Image = dst
 
 	return nil
