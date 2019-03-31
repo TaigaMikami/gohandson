@@ -30,7 +30,7 @@ func (r *room) run() {
 	for {
 		select {
 		case client := <-r.join:
-			r.cliets[client] = true
+			r.clients[client] = true
 		case client := <- r.leave:
 			delete(r.clients, client)
 			close(client.send)
@@ -55,7 +55,7 @@ const (
 
 var upgrader = &websocket.Upgrader{ReadBufferSize: socketBufferSize, WriteBufferSize: socketBufferSize}
 
-func (r *room) ServeHTTP(w http.ResponseWriter, req *http.Response) {
+func (r *room) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	socket, err := upgrader.Upgrade(w, req, nil)
 	if err != nil {
 		log.Fatal("ServeHTTP:", err)
