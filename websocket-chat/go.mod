@@ -1,4 +1,4 @@
-module github.com/TaigaMikami/websocket-chat
+module github.com/TaigaMikami/gohandson/websocket-chat
 
 go 1.12
 

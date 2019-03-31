@@ -2,11 +2,13 @@ package main
 
 import (
 	"flag"
+	"html/template"
 	"log"
 	"net/http"
-	"html/template"
 	"os"
 	"path/filepath"
+
+	"github.com/TaigaMikami/gohandson/websocket-chat/trace"
 )
 
 type templateHandler struct {
@@ -23,9 +25,13 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	var addr = flag.String("addr", ":8080", "アプリケーションのアドレス")
+	var is_trace = flag.String("is_trace", "true", "トレース")
 	flag.Parse()
 	r := newRoom()
-	r.tracer = tracer.New(os.Stdout)
+
+	if *is_trace == "true" {
+		r.tracer = trace.New(os.Stdout)
+	}
 	http.Handle("/", &templateHandler{filename: "chat.html"})
 	http.Handle("/room", r)
 

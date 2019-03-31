@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 	"github.com/gorilla/websocket"
-	"github.com/TaigaMikami/gohandson/websocket-chat/trace/trace"
+	"github.com/TaigaMikami/gohandson/websocket-chat/trace"
 )
 type room struct {
 	// forward is a channel that holds incoming messages
@@ -26,6 +26,7 @@ func newRoom() *room {
 		join: make(chan *client),
 		leave: make(chan *client),
 		clients: make(map[*client]bool),
+		tracer: trace.Off(),
 	}
 }
 
