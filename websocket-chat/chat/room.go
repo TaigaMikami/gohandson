@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 	"github.com/gorilla/websocket"
-	"github.com/TaigaMikami/gohandson/websocket-chat/trace"
+	"github.com/TaigaMikami/gohandson/websocket-chat/trace/trace"
 )
 type room struct {
 	// forward is a channel that holds incoming messages

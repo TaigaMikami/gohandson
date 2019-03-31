@@ -1,2 +1,4 @@
+github.com/TaigaMikami/gohandson v0.0.0-20190331124146-12669a4882ae h1:K84FUSFZ8iq5CiVqlJ1DyQU5iQmDjUb2UPAkioj2h7k=
+github.com/TaigaMikami/gohandson/websocket-chat v0.0.0-20190331124146-12669a4882ae h1:kbjoFJyurdV+BtLUJsouNrBHOmFVRgI/FQrzDYf50Rc=
 github.com/gorilla/websocket v1.4.0 h1:WDFjx/TMzVgy9VdMMQi2K2Emtwi2QcUQsztZ/zLaH/Q=
 github.com/gorilla/websocket v1.4.0/go.mod h1:E7qHFY5m1UJ88s3WnNqhKjPHQ0heANvMoAMk2YaljkQ=
