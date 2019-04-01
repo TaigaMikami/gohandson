@@ -6,6 +6,7 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/TaigaMikami/gohandson/websocket-chat/trace"
 )
+
 type room struct {
 	// forward is a channel that holds incoming messages
 	// that should be forwarded to the other clients

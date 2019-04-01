@@ -1,3 +1,5 @@
+github.com/TaigaMikami/gohandson v0.0.0-20190331150640-e181e5612f40 h1:JkAVcF9nomLb0k6hjNlGIY1FAlQRlnriQlnvcIAGIbs=
+github.com/TaigaMikami/gohandson v0.0.0-20190401043954-1db449378d43 h1:wX16A2LGCoDR/52CRDDJy6g5AeRQ/cmWJoB8JEHHO4U=
 github.com/clbanning/x2j v0.0.0-20180326210544-5e605d46809c h1:gZ7YRTPnL5fRduIw4unEfQWLB/DInK29N2zYza16wfQ=
 github.com/clbanning/x2j v0.0.0-20180326210544-5e605d46809c/go.mod h1:jMjuTZXRI4dUb/I5gc9Hdhagfvm9+RyrPryS/auMzxE=
 github.com/gorilla/websocket v1.4.0 h1:WDFjx/TMzVgy9VdMMQi2K2Emtwi2QcUQsztZ/zLaH/Q=
