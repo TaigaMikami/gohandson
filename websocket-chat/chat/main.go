@@ -9,6 +9,8 @@ import (
 	"path/filepath"
 
 	"github.com/TaigaMikami/gohandson/websocket-chat/trace"
+	"github.com/stretchr/gomniauth"
+	"github.com/stretchr/gomniauth/providers/github"
 )
 
 type templateHandler struct {
