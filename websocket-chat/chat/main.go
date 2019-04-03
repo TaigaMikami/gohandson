@@ -32,6 +32,17 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	t.templ.Execute(w, data)
 }
 
+func logout(w http.ResponseWriter, r *http.Request) {
+	http.SetCookie(w, &http.Cookie{
+		Name: "auth",
+		Value: "",
+		Path: "/",
+		MaxAge: -1,
+	})
+	w.Header()["Location"] = []string{"/chat"}
+	w.WriteHeader(http.StatusTemporaryRedirect)
+}
+
 func main() {
 	var addr = flag.String("addr", ":8080", "アプリケーションのアドレス")
 	var is_trace = flag.String("is_trace", "true", "トレース")
@@ -48,6 +59,7 @@ func main() {
 	http.Handle("/", MustAuth(&templateHandler{filename: "chat.html"}))
 	http.Handle("/login", &templateHandler{filename: "login.html"})
 	http.HandleFunc("/auth/", loginHandler)
+	http.HandleFunc("/logout", logout)
 	http.Handle("/room", r)
 
 	// get the room going

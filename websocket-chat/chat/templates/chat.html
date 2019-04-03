@@ -3,18 +3,32 @@
   <title>Chat</title>
   <style>
     input { display: block; }
-    ul { list-style: none; }
+    ul#messages { list-style: none; }
+    ul#messages li { margin-bottom: 2px }
+    ul#messages li img { margin-right: 10px }
   </style>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-  <ul id="messages"></ul>
-  WebSocketを使ったチャットアプリケーション
-  <form action="" id="chatbox">
-    {{.UserData.name}}<br/>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
-    <input type="submit" value="送信">
-  </form>
+  <div class="jumnotron">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="display-5">WebSocketを使ったチャットアプリケーション</h3>
+          <ul id="messages"></ul>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <form action="" id="chatbox" role="form">
+            <label for="message">{{.UserData.name}}からメッセージを送信</label>または <a href="/logout">サインアウト</a>
+            <textarea name="" id="" cols="100" rows="5" class="form-control" id="message"></textarea>
+            <input type="submit" class="btn btn-default" value="送信">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
@@ -44,10 +58,11 @@
        var msg = eval("("+e.data+")");
        messages.append(
          $("<li>").append(
-           $("<img>").css({ width: 50,  verticalAlign: "middle"}).attr("src", msg.AvatarURL),
-           $("<span>").text(msg.Sent_at + "--"),
+           $("<img>").attr("title", msg.Name).css({ width: 50,  verticalAlign: "middle"}).attr("src", msg.AvatarURL),
            $("<strong>").text(msg.Name + ": "),
-           $("<span>").text(msg.Message)
+           $("<span>").text(msg.Message),
+           $("<br />"),
+           $("<span>").text(msg.Sent_at)
          )
        );
      }
