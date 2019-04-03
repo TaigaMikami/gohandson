@@ -7,4 +7,5 @@ type message struct {
 	Message string
 	When time.Time
 	Sent_at string
+	Avatar_URL string
 }
