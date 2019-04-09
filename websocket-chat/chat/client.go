@@ -20,9 +20,7 @@ func (c *client) read() {
 			msg.When = time.Now()
 			msg.Sent_at = msg.When.Format("01-02-03-04")
 			msg.Name = c.userData["name"].(string)
-			if avatarURL, ok := c.userData["avatar_url"]; ok {
-				msg.Avatar_URL = avatarURL.(string)
-			}
+			msg.Avatar_URL, _ = c.room.avatar.GetAvatarURL(c)
 			c.room.forward <- msg
 		} else {
 			break

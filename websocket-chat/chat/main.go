@@ -51,7 +51,7 @@ func main() {
 	gomniauth.WithProviders(
 		github.New("320540c03df1cda7aa65", "33e078f10d34087e93a82377f81a6731799a4bc0", "http://localhost:8080/auth/callback/github"),
 	)
-	r := newRoom()
+	r := newRoom(UseAuthAvatar)
 
 	if *is_trace == "true" {
 		r.tracer = trace.New(os.Stdout)
