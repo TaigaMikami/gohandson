@@ -4,6 +4,8 @@ github.com/clbanning/x2j v0.0.0-20180326210544-5e605d46809c h1:gZ7YRTPnL5fRduIw4
 github.com/clbanning/x2j v0.0.0-20180326210544-5e605d46809c/go.mod h1:jMjuTZXRI4dUb/I5gc9Hdhagfvm9+RyrPryS/auMzxE=
 github.com/gorilla/websocket v1.4.0 h1:WDFjx/TMzVgy9VdMMQi2K2Emtwi2QcUQsztZ/zLaH/Q=
 github.com/gorilla/websocket v1.4.0/go.mod h1:E7qHFY5m1UJ88s3WnNqhKjPHQ0heANvMoAMk2YaljkQ=
+github.com/joho/godotenv v1.3.0 h1:Zjp+RcGpHhGlrMbJzXTrZZPrWj+1vfm90La1wgB6Bhc=
+github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=
 github.com/stretchr/codecs v0.0.0-20170403063245-04a5b1e1910d h1:gXQ+QS3q874pcayiqszimfHPQ7ySFcekgzBMoTaVawk=
 github.com/stretchr/codecs v0.0.0-20170403063245-04a5b1e1910d/go.mod h1:RpfDhdqip2BYhzoE4esKm8axH5VywpvMW9o3wfcamek=
 github.com/stretchr/gomniauth v0.0.0-20170717123514-4b6c822be2eb h1:6lYIg/SCrz3gsCsEpRpK0BW3tBGt4VuQKlAleoxCgCc=

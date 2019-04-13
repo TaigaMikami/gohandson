@@ -8,10 +8,12 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/joho/godotenv"
 	"github.com/TaigaMikami/gohandson/websocket-chat/trace"
 	"github.com/stretchr/objx"
 	"github.com/stretchr/gomniauth"
 	"github.com/stretchr/gomniauth/providers/github"
+	"github.com/stretchr/gomniauth/providers/google"
 )
 
 type templateHandler struct {
@@ -47,9 +49,14 @@ func main() {
 	var addr = flag.String("addr", ":8080", "アプリケーションのアドレス")
 	var is_trace = flag.String("is_trace", "true", "トレース")
 	flag.Parse()
+	err := godotenv.Load("envfiles/development.env")
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 	gomniauth.SetSecurityKey("98dfbg7iu2nb4uywevihjw4tuiyub34noilk")
 	gomniauth.WithProviders(
-		github.New("320540c03df1cda7aa65", "33e078f10d34087e93a82377f81a6731799a4bc0", "http://localhost:8080/auth/callback/github"),
+		github.New(os.Getenv("GITHUB_ID"), os.Getenv("GITHUB_SECRET"), "http://localhost:8080/auth/callback/github"),
+		google.New(os.Getenv("GOOGLE_ID"), os.Getenv("GOOGLE_SECRET"), "http://localhost:8080/auth/callback/google"),
 	)
 	r := newRoom(UseGravatar)
 
