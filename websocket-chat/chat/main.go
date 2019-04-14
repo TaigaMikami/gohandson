@@ -16,6 +16,8 @@ import (
 	"github.com/stretchr/gomniauth/providers/google"
 )
 
+var avatars Avatar = TryAvatars{ UseFileSystemAvatar, UseAuthAvatar, UseGravatar }
+
 type templateHandler struct {
 		filename string
 		templ *template.Template
@@ -58,7 +60,7 @@ func main() {
 		github.New(os.Getenv("GITHUB_ID"), os.Getenv("GITHUB_SECRET"), "http://localhost:8080/auth/callback/github"),
 		google.New(os.Getenv("GOOGLE_ID"), os.Getenv("GOOGLE_SECRET"), "http://localhost:8080/auth/callback/google"),
 	)
-	r := newRoom(UseFileSystemAvatar)
+	r := newRoom(UseAuthAvatar)
 
 	if *is_trace == "true" {
 		r.tracer = trace.New(os.Stdout)

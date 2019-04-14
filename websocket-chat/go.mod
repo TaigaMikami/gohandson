@@ -11,6 +11,7 @@ require (
 	github.com/stretchr/objx v0.1.1
 	github.com/stretchr/signature v0.0.0-20160104132143-168b2a1e1b56 // indirect
 	github.com/stretchr/stew v0.0.0-20130812190256-80ef0842b48b // indirect
+	github.com/stretchr/testify v1.3.0 // indirect
 	github.com/stretchr/tracer v0.0.0-20140124184152-66d3696bba97 // indirect
 	github.com/ugorji/go/codec v0.0.0-20190320090025-2dc34c0b8780 // indirect
 	gopkg.in/mgo.v2 v2.0.0-20180705113604-9856a29383ce // indirect
