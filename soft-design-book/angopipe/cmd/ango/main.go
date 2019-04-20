@@ -1,7 +1,7 @@
 package main
 
 import (
-	"angopipe"
+	"github.com/TaigaMikami/gohandson/soft-design-book/angopipe"
 	"crypto/rand"
 	"fmt"
 	"io"

@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-func Prepare() (clipher.AEAD, error) {
+func Prepare() (cipher.AEAD, error) {
 	rawKey := os.Getenv("ANGO_KEY")
 	if rawKey == "" {
 		return nil, errors.New("Environment Variable 'ANGO_KEY' is empty")
