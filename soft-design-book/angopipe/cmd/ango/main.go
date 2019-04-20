@@ -11,7 +11,7 @@ import (
 func main() {
 	gcm, err := angopipe.Prepare()
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		fmt.Fprintf(os.Stderr, err)
 		os.Exit(1)
 	}
 
