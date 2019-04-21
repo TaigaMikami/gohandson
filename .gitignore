@@ -1,3 +1,5 @@
 websocket-chat/chat/chat
 websocket-chat/chat/avatars/
 websocket-chat/chat/envfiles
+
+**/lib/
