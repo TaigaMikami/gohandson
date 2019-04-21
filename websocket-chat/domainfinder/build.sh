@@ -1,6 +1,6 @@
 #!/bin/bash
-#echo domainfinderをビルドします
-#go build -o domainfinder
+echo domainfinderをビルドします
+go build -o domainfinder
 
 echo synonymsをビルドします
 cd ../synonyms
