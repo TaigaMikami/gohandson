@@ -3,3 +3,6 @@ websocket-chat/chat/avatars/
 websocket-chat/chat/envfiles
 
 **/lib/
+
+*.dat
+**/db/
