@@ -2,6 +2,8 @@ github.com/TaigaMikami/gohandson v0.0.0-20190331150640-e181e5612f40 h1:JkAVcF9no
 github.com/TaigaMikami/gohandson v0.0.0-20190401043954-1db449378d43 h1:wX16A2LGCoDR/52CRDDJy6g5AeRQ/cmWJoB8JEHHO4U=
 github.com/bitly/go-nsq v1.0.7 h1:o6nk7C1LyG9wAEsD7AfPExMpLwfbc0oYwBhzQxqefQM=
 github.com/bitly/go-nsq v1.0.7/go.mod h1:uRcXTyAr/ggVrYpmvkE4jkJNSWov99Gg4fwhhypc/P8=
+github.com/cheekybits/is v0.0.0-20150225183255-68e9c0620927 h1:SKI1/fuSdodxmNNyVBR8d7X/HuLnRpvvFO0AgyQk764=
+github.com/cheekybits/is v0.0.0-20150225183255-68e9c0620927/go.mod h1:h/aW8ynjgkuj+NQRlZcDbAbM1ORAbXjXX77sX7T289U=
 github.com/clbanning/x2j v0.0.0-20180326210544-5e605d46809c h1:gZ7YRTPnL5fRduIw4unEfQWLB/DInK29N2zYza16wfQ=
 github.com/clbanning/x2j v0.0.0-20180326210544-5e605d46809c/go.mod h1:jMjuTZXRI4dUb/I5gc9Hdhagfvm9+RyrPryS/auMzxE=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=

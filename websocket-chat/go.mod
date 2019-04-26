@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	github.com/bitly/go-nsq v1.0.7
+	github.com/cheekybits/is v0.0.0-20150225183255-68e9c0620927 // indirect
 	github.com/clbanning/x2j v0.0.0-20180326210544-5e605d46809c // indirect
 	github.com/garyburd/go-oauth v0.0.0-20180319155456-bca2e7f09a17
 	github.com/golang/snappy v0.0.1 // indirect
